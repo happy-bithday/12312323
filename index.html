@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link href="style.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <title>Попробуй, тебе понравится</title>
+    </head>
+<body>
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <div class="container">
+        <div class="row v-center">
+            <div class="col-lg-6 px-5">
+                <div class="popup my-5" id="popup-1">
+                    <h2>
+                        Добро пожаловать
+                    </h2>
+                    <p>
+                        Рады приветствовать тебя на нашем сайте.
+                    </p>
+                    <span class="text-small">
+                        чтобы продолжить нажми "Далее"
+                    </span>
+                    <span onclick="next1()" type="button" class="next">Далее</span>
+                </div>
+                <div class="popup my-5" id="popup-2">
+                    <img src="img/smile.png" class="smile">
+                    <h2>
+                        У нас сегодня праздник
+                    </h2>
+                    <p>
+                        По этому поводу мы решили провести конкурс с ценными призами. Совершенно беслпатно. Без регистрации и СМС.
+                    </p>
+                    <span class="text-small">
+                        чтобы продолжить нажми "Далее"
+                    </span>
+                    <span onclick="next2()" type="button" class="next">Далее</span>
+                </div>
+                <div class="popup my-5" id="popup-3">
+                    <p>
+                        От тебя требуется всего лишь промотать экран вниз и следовать указаниям.
+                    </p>
+                    <span class="text-small">
+                        чтобы продолжить нажми "Далее"
+                    </span>
+                    <a href="#price" onclick="next3()" type="button" class="next">Далее</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="bubble">
+                    <img src="img/Saly.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+    <div class="container">
+        <div class="row" id="price">
+            <div class="col-12 text-center">
+                <h2>
+                    Выбери одну любую карточку
+                </h2>
+                <p>
+                    попытка будет только одна
+                </p>
+            </div>
+            <a href="#finish" class="col-lg-4">
+                <div class="scene">
+                    <div class="card text-center" id="card-1" onclick="cardOne()">
+                      <div class="card__face card__face--front"><img src="img/price-1.png"></div>
+                      <div class="card__face card__face--back"></div>
+                    </div>
+                </div>
+            </a>
+            <a href="#finish" class="col-lg-4">
+                <div class="scene">
+                    <div class="card text-center" id="card-2" onclick="cardTwo()">
+                      <div class="card__face card__face--front"><img src="img/price-2.png"></div>
+                      <div class="card__face card__face--back"></div>
+                    </div>
+                </div>
+            </a>
+            <a href="#finish" class="col-lg-4">
+                <div class="scene">
+                    <div class="card text-center" id="card-3" onclick="cardThree()">
+                      <div class="card__face card__face--front"><img src="img/price-3.png"></div>
+                      <div class="card__face card__face--back"></div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="row mt-5 v-center js-container" id="finish">
+            <div class="col-lg-6">
+                <div class="popup" id="popup-4">
+                    <h2>
+                        Ура!
+                    </h2>
+                    <p>
+                        Ты получаешь супер приз!
+                    </p>
+                    <span class="text-small">
+                        Нажми "Завершить"
+                    </span>
+                    <span onclick="end()" type="button" class="next">Завершить</span>
+                </div>
+            </div>
+            <div class="col-lg-6 px-5 my-5">
+                <div class="bubble2">
+                    <img src="img/bubble.png">
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <script>
+        $("#popup-1").fadeIn(2000);
+        function next1(){
+            $("#popup-1").fadeOut(0);
+            $("#popup-2").fadeIn(0);
+        }
+        function next2(){
+            $("#popup-2").fadeOut(0);
+            $("#popup-3").fadeIn(0);
+        }
+        function cardOne(){
+            $("#card-1").toggleClass("is-flipped");
+            $("#card-2").removeAttr("id");
+            $("#card-3").removeAttr("id");
+            $("#popup-4").fadeIn("6000");
+        }
+        function cardTwo(){
+            $("#card-2").toggleClass("is-flipped");
+            $("#card-1").removeAttr("id");
+            $("#card-3").removeAttr("id");
+            $("#popup-4").fadeIn("6000");
+        }
+        function cardThree(){
+            $("#card-3").toggleClass("is-flipped");
+            $("#card-1").removeAttr("id");
+            $("#card-2").removeAttr("id");
+            $("#popup-4").fadeIn("6000");
+        }
+        function end(){
+            $(".confetti-container").fadeIn("2000");
+        }
+
+        jQuery(document).ready(function() {
+        jQuery("a.col-lg-4").click(function () {
+        elementClick = jQuery(this).attr("href")
+        destination = jQuery(elementClick).offset().top;
+        jQuery("html:not(:animated),body:not(:animated)").animate({scrollTop: destination}, 2000);
+        return false;
+        });
+        });
+        "use strict";
+
+const Confettiful = function (el) {
+  this.el = el;
+  this.containerEl = null;
+  this.confettiFrequency = 3;
+  this.confettiColors = ['#6A42ED', '#F8EEF0', "#6A42ED", "#C8BEAD"];
+  this.confettiAnimations = ['slow', 'medium', 'fast'];
+
+  this._setupElements();
+
+  this._renderConfetti();
+};
+
+Confettiful.prototype._setupElements = function () {
+  const containerEl = document.createElement('div');
+  const elPosition = this.el.style.position;
+
+  if (elPosition !== 'relative' || elPosition !== 'absolute') {
+    this.el.style.position = 'relative';
+  }
+
+  containerEl.classList.add('confetti-container');
+  this.el.appendChild(containerEl);
+  this.containerEl = containerEl;
+};
+
+Confettiful.prototype._renderConfetti = function () {
+  this.confettiInterval = setInterval(() => {
+    const confettiEl = document.createElement('div');
+    const confettiSize = Math.floor(Math.random() * 10) + 10 + 'px';
+    const confettiBackground = this.confettiColors[Math.floor(Math.random() * this.confettiColors.length)];
+    const confettiLeft = Math.floor(Math.random() * this.el.offsetWidth) + 'px';
+    const confettiAnimation = this.confettiAnimations[Math.floor(Math.random() * this.confettiAnimations.length)];
+    confettiEl.classList.add('confetti', 'confetti--animation-' + confettiAnimation);
+    confettiEl.style.left = confettiLeft;
+    confettiEl.style.width = confettiSize;
+    confettiEl.style.height = confettiSize;
+    confettiEl.style.backgroundColor = confettiBackground;
+    confettiEl.removeTimeout = setTimeout(function () {
+      confettiEl.parentNode.removeChild(confettiEl);
+    }, 3000);
+    this.containerEl.appendChild(confettiEl);
+  }, 25);
+};
+
+window.confettiful = new Confettiful(document.querySelector('.js-container'));
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
